@@ -1,0 +1,27 @@
+{
+  "name": "anotamela-api",
+  "version": "0.0.0",
+  "description": "una app para crear notas",
+  "main": "server.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andreskwan/n-anotamela.git"
+  },
+  "author": "JPB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreskwan/n-anotamela/issues"
+  },
+  "homepage": "https://github.com/andreskwan/n-anotamela",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4",
+    "supertest": "^0.13.0"
+  },
+  "dependencies": {
+    "express": "^4.9.0"
+  }
+}
