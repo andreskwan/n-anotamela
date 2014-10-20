@@ -3,7 +3,7 @@
 */
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var logger     = require('./lib/logger/logger.js');
 
 /**
 * Local Variables
@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 //se exporta el servicio - server para que las pruebas lo consuman
 var server = module.exports = express();
 var port   = process.env.PORT || 3000;
-
+var db     = {};
 /**	
 * Middleware
 */
@@ -28,31 +28,54 @@ server.post('/notas', function (req, res){
 	//- para poder analizar esto necesitamos 
 	//bodyparser 
 	//accessing the body data
-	console.log('POST', req.body);
-	var notaBody = 	req.body.nota;
+	logger.info('POST body.nota', req.body.nota);
+	var notaNueva = 	req.body.nota;
 	//adding id to the json 
-	notaBody.id = 123;
-	
+	//no tiene id 
+	notaNueva.id = Date.now();
+	db[notaNueva.id] = notaNueva;
+	logger.info('alamcenado en la db (POST):', db);
+
 	res
+	.set('Content-Type','application/json')//delete
 	.status(201)
 	.send({
-			"nota": notaBody//{
+			"nota": notaNueva//{
 			// 		'title': "Mejorando.la #node-pro",
 			// 		"description": "Introduccion a clase",
 			// 		"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
 			// 		"body": "soy el cuerpo de json",
-			// 		"id":"pepe"
+			// // 		"id":"pepe"
 				// }
 		}); 
 });
 
+//id? significa que es un parametro opcional
+server.get('/notas/:id?', function (req, res){
+	// logger.info('alamcenado en la db (POST):\n', db);
+	logger.info('GET /notas/%s', req.params.id);
+
+	var id = req.params.id;
+	//buscar nota existente by id
+	var nota = db[id];
+	// logger.info("GET db", db);
+	logger.info("GET nota", nota);
+	if (!nota) {
+		res.status(404);
+		return res.send('Not Found');
+	}
+	res
+	.json({
+		notas:nota
+	});
+});
 //to work with supertest
 //supertest nos esta usando como modulo?
 //o somos el servidor 
 //si tengo padre, me estan usando como modulo
 if (!module.parent) {
 	server.listen(port, function (){
-		console.log('http://localhost:'+port);
+		// logger.info('http	://localhost:'+port);
 	});
 }else{
 	module.exports = server;
