@@ -14,7 +14,7 @@ request = request(host);
 describe('recurso /notas', function (){
 	//La primera prueba sera POST
 	describe('POST', function () {
-		it.skip('should return/create a new note', function (done){
+		it('should return/create a new note', function (done){
 			// throw new Error('tengo hambre'); 
 			// return true;
 			//crear nota nueva
