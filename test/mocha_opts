@@ -2,3 +2,4 @@
 --reporter spec
 -r test/helpers/setup
 -w
+-G

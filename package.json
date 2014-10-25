@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/andreskwan/n-anotamela",
   "devDependencies": {
+    "async": "^0.9.0",
     "chai": "^1.9.1",
     "mocha": "^1.21.4",
     "supertest": "^0.13.0"
