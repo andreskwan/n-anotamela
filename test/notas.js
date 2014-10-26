@@ -2,9 +2,9 @@
 //Supertest
 //para hacer solicitud al 
 //hace lo mismo que postman 
-var request = require('supertest');
+var request = require('supertest-as-promised');
 var api     = require('../server.js');
-var async   = require('async');
+// var async   = require('async');
 //correr pruebas con diferentes host
 var host    = process.env.API_TEST_HOST || api;
 
@@ -93,35 +93,27 @@ describe('recurso /notas', function (){
 				}
 			};
 			var id;
-			async.waterfall([
-					function postNote(callback){
-						request.post('/notas')
-						.set('Accept', 'application/json')
-						.send(data)
-						.expect(201)
-						.expect('Content-Type', /application\/json/)
-						.end(callback);
-					},
-					//pasa resultado y entrega callback para la siguiente funcion
-					function getNote(res, callback){
-						id = res.body.nota.id;
-						request.get('/notas/'+id)
-						.expect(200)
-						.expect('Content-type', /application\/json/)
-						.end(callback);
-					},
-					function assertions (res, callback){
-						var nota = res.body.notas;	
-						expect(res.body).to.have.property('notas');
-						expect(nota).to.have.property('id', id);
-						expect(nota).to.have.property('title', 'Mejorando.la #node-pro');
-						expect(nota).to.have.property('description', 'Introduccion a clase');
-						expect(nota).to.have.property('type', 'js');
-						expect(nota).to.have.property('body', 'soy el cuerpo de json');
-						callback();
-					}
-				], 
-				done)		
+			request.post('/notas')
+				.set('Accept', 'application/json')
+				.send(data)
+				.expect(201)
+				.then(function getNota (res){
+					id = res.body.nota.id;
+					return request.get('/notas/'+id)
+					.expect(200)
+					.expect('Content-type', /application\/json/)
+				}, done)
+				.then(function assertions (res){
+					var nota = res.body.notas;	
+
+					expect(res.body).to.have.property('notas');
+					expect(nota).to.have.property('id', id);
+					expect(nota).to.have.property('title', 'Mejorando.la #node-pro');
+					expect(nota).to.have.property('description', 'Introduccion a clase');
+					expect(nota).to.have.property('type', 'js');
+					expect(nota).to.have.property('body', 'soy el cuerpo de json');
+					done();
+				}, done);
 		});
 	});
 });
