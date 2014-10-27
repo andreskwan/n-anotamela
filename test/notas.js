@@ -2,12 +2,13 @@
 //Supertest
 //para hacer solicitud al 
 //hace lo mismo que postman 
-var request = require('supertest-as-promised');
-var api     = require('../server.js');
-// var async   = require('async');
+var request  = require('supertest-as-promised');
+var api      = require('../server.js');
+var logger   = require('../lib/logger/logger.js');
+// var async = require('async');
 //correr pruebas con diferentes host
-var host    = process.env.API_TEST_HOST || api;
-request     = request(host);
+var host     = process.env.API_TEST_HOST || api;
+request      = request(host);
 
 //hacer una prueba del recurso notas.js
 //esta funcion describe el contexto de la prueba inicial
@@ -134,6 +135,7 @@ describe('recurso /notas', function (){
 				//obtener nota
 				.then(function getNota (res){
 					id = res.body.nota.id;
+					logger.info('in getNota');					
 					return request.get('/notas/'+id)
 					.expect(200)
 				}, done)
@@ -141,7 +143,7 @@ describe('recurso /notas', function (){
 				.then(function putNota (res){
 					var notaActualizada = res.body.notas;
 					notaActualizada.title = "Nota actualizada";
-
+					logger.info('in putNota');
 					return request.put('/notas/'+id)
 						.send(notaActualizada)
 						.expect(200)
@@ -150,7 +152,7 @@ describe('recurso /notas', function (){
 				//eveluar que la nota se haya actualizado correctamente
 				.then(function assertions (res){
 					var notaValidar = res.body.nota;	
-
+					logger.info('in assertions');
 					expect(res.body).to.have.property('notas');
 					expect(notaValidar).to.have.property('id', id);
 					expect(notaValidar).to.have.property('title', 'Nota actualizada');
