@@ -7,7 +7,6 @@ var api     = require('../server.js');
 // var async   = require('async');
 //correr pruebas con diferentes host
 var host    = process.env.API_TEST_HOST || api;
-
 request     = request(host);
 
 //hacer una prueba del recurso notas.js
@@ -114,6 +113,54 @@ describe('recurso /notas', function (){
 					expect(nota).to.have.property('body', 'soy el cuerpo de json');
 					done();
 				}, done);
+		});
+	});
+	describe('PUT', function() {
+		it('deberia actualizar una nota existente', function (done) {
+			var data = {
+				"nota": {
+					"title": "Mejorando.la #node-pro",
+					"description": "Introduccion a clase",
+					"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
+					"body": "soy el cuerpo de json"
+				}
+			};
+			var id;
+				//crear nota
+				request.post('/notas')
+					.set('Accept', 'application/json')
+					.send(data)
+					.expect(201)
+				//obtener nota
+				.then(function getNota (res){
+					id = res.body.nota.id;
+					return request.get('/notas/'+id)
+					.expect(200)
+				}, done)
+				//editar nota
+				.then(function putNota (res){
+					var notaActualizada = res.body.notas;
+					notaActualizada.title = "Nota actualizada";
+
+					return request.put('/notas/'+id)
+						.send(notaActualizada)
+						.expect(200)
+						.expect('Content-type', /application\/json/)
+				}, done)
+				//eveluar que la nota se haya actualizado correctamente
+				.then(function assertions (res){
+					var notaValidar = res.body.nota;	
+
+					expect(res.body).to.have.property('notas');
+					expect(notaValidar).to.have.property('id', id);
+					expect(notaValidar).to.have.property('title', 'Nota actualizada');
+					expect(notaValidar).to.have.property('description', 'Introduccion a clase');
+					expect(notaValidar).to.have.property('type', 'js');
+					expect(notaValidar).to.have.property('body', 'soy el cuerpo de json');
+					done();
+				},done) 
+				// (){
+				// 	console.log(error in putNota);
 		});
 	});
 });
