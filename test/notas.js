@@ -67,7 +67,7 @@ describe('recurso /notas', function (){
 				// 	expect(body).to.have.property('nota');
 		});
 		//no pasa, no funciona la asynchronia
-		it.skip('should evaluate async', function (done){
+		it('should evaluate async', function (done){
 			  //1 codigo 
 			  var mejorandola = 'prueba';
 
@@ -117,7 +117,7 @@ describe('recurso /notas', function (){
 		});
 	});
 	describe('PUT', function() {
-		it('deberia actualizar una nota existente', function (done) {
+		it.only('deberia actualizar una nota existente', function (done) {
 			var data = {
 				"nota": {
 					"title": "Mejorando.la #node-pro",
@@ -135,27 +135,34 @@ describe('recurso /notas', function (){
 				//obtener nota
 				.then(function getNota (res){
 					id = res.body.nota.id;
-					logger.info('in getNota');					
+					// logger.info('in getNota');					
 					return request.get('/notas/'+id)
 					.expect(200)
 				}, done)
 				//editar nota
 				.then(function putNota (res){
+					// logger.info('in putNota');
+					//get returns notas
+					// logger.info('res.body: ',res.body);
+					// logger.info('res.body.notas: ',res.body.notas);
 					var notaActualizada = res.body.notas;
-					notaActualizada.title = "Nota actualizada";
-					logger.info('in putNota');
+					// logger.info("Nota original: ", notaActualizada);
+					notaActualizada.title = "Nota actualizada Kwan";
 					return request.put('/notas/'+id)
-						.send(notaActualizada)
+						.send({nota:notaActualizada})
 						.expect(200)
 						.expect('Content-type', /application\/json/)
 				}, done)
 				//eveluar que la nota se haya actualizado correctamente
 				.then(function assertions (res){
+					logger.info("in assertions");
+
 					var notaValidar = res.body.nota;	
-					logger.info('in assertions');
-					expect(res.body).to.have.property('notas');
+					logger.info('res.body:',res.body);
+					// logger.info('notaValidar',notaValidar);
+					expect(res.body).to.have.property('nota');
 					expect(notaValidar).to.have.property('id', id);
-					expect(notaValidar).to.have.property('title', 'Nota actualizada');
+					expect(notaValidar).to.have.property('title', 'Nota actualizada Kwan');
 					expect(notaValidar).to.have.property('description', 'Introduccion a clase');
 					expect(notaValidar).to.have.property('type', 'js');
 					expect(notaValidar).to.have.property('body', 'soy el cuerpo de json');
