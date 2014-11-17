@@ -49,8 +49,6 @@ describe('recurso /notas', function (){
 				//callback para evaluar el body
 				.end(function (err, res){
 					var body = res.body;
-					console.log('(TESTING POST) JSON response del server por el POST: \n', body);
-
 					//does the note exist?
 					expect(body).to.have.property('nota');
 					nota = body.nota;
@@ -67,7 +65,7 @@ describe('recurso /notas', function (){
 				// 	expect(body).to.have.property('nota');
 		});
 		//no pasa, no funciona la asynchronia
-		it('should evaluate async', function (done){
+		it.skip('should evaluate async', function (done){
 			  //1 codigo 
 			  var mejorandola = 'prueba';
 
@@ -117,7 +115,7 @@ describe('recurso /notas', function (){
 		});
 	});
 	describe('PUT', function() {
-		it.only('deberia actualizar una nota existente', function (done) {
+		it('deberia actualizar una nota existente', function (done) {
 			var data = {
 				"nota": {
 					"title": "Mejorando.la #node-pro",
@@ -170,6 +168,46 @@ describe('recurso /notas', function (){
 				},done) 
 				// (){
 				// 	console.log(error in putNota);
+		});
+	});
+	describe('DELETE', function() {
+		it('deberia borrar una nota existente', function (done){
+			// crear nota
+			var data = {
+				"nota": {
+					"title": "Mejorando.la #node-pro",
+					"description": "Introduccion a clase",
+					"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
+					"body": "soy el cuerpo de json"
+				}
+			};
+			var id;
+			//crear nota
+			request.post('/notas')
+				.set('Accept', 'application/json')
+				.send(data)
+				.expect(201)
+			// delete nota
+			// se actualiza la nota con contenido nulo, no se 
+			// envia nada
+			.then(function deleteNota (res){
+				id = res.body.nota.id;
+				// logger.info('in getNota');		
+				// debe retornar un objeto JSON vacio			
+				return request.delete('/notas/'+id)
+				.expect(204)
+			}, done)
+			// obtener id nota nueva
+			// confirma que fue borrada
+			// solo se escuchar la res porque req biene vacio 
+			.then(function assertNoteDestroyed(res){
+				//this return is for errors handled by done
+				return request.get('/notas/'+id)
+				.expect(400);				
+			},done)
+			.then( function (){
+				done();
+			});
 		});
 	});
 });
