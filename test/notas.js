@@ -122,28 +122,14 @@ describe('recurso /notas', function (){
 		});
 	});
 	describe('PUT', function() {
+		beforeEach(createNote);
 		it('deberia actualizar una nota existente', function (done) {
-			var data = {
-				"nota": {
-					"title": "Mejorando.la #node-pro",
-					"description": "Introduccion a clase",
-					"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
-					"body": "soy el cuerpo de json"
-				}
-			};
-			var id;
-			//crear nota
-			request.post('/notas')
+			var id = this.id;
+			return request.get('/notas/'+id)
 				.set('Accept', 'application/json')
-				.send(data)
-				.expect(201)
-			//obtener nota
-			.then(function getNota (res){
-				id = res.body.nota.id;
-				// logger.info('in getNota');					
-				return request.get('/notas/'+id)
+				.send()
 				.expect(200)
-			}, done)
+				.expect('Content-type', /application\/json/)
 			//editar nota
 			.then(function putNota (res){
 				// logger.info('in putNota');
