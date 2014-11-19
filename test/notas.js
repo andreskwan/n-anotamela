@@ -158,44 +158,19 @@ describe('recurso /notas', function (){
 				expect(notaValidar).to.have.property('type', 'js');
 				expect(notaValidar).to.have.property('body', 'soy el cuerpo de json');
 				done();
-			},done) 
+			}, done) 
 		});
 	});
 	describe('DELETE', function() {
+		beforeEach(createNote);
 		it('deberia borrar una nota existente', function (done){
-			// crear nota
-			var data = {
-				"nota": {
-					"title": "Mejorando.la #node-pro",
-					"description": "Introduccion a clase",
-					"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
-					"body": "soy el cuerpo de json"
-				}
-			};
-			var id;
-			//crear nota
-			request.post('/notas')
-				.set('Accept', 'application/json')
-				.send(data)
-				.expect(201)
-			// delete nota
-			// se actualiza la nota con contenido nulo, no se 
-			// envia nada
-			.then(function deleteNota (res){
-				id = res.body.nota.id;
-				// logger.info('in getNota');		
-				// debe retornar un objeto JSON vacio			
-				return request.delete('/notas/'+id)
-				.expect(204)
-			}, done)
-			// obtener id nota nueva
-			// confirma que fue borrada
-			// solo se escuchar la res porque req biene vacio 
+			var id = this.id;
+			return request.delete('/notas/'+id)
+			.expect(204)
 			.then(function assertNoteDestroyed(res){
-				//this return is for errors handled by done
 				return request.get('/notas/'+id)
 				.expect(400);				
-			},done)
+			}, done)
 			.then( function (){
 				done();
 			});
