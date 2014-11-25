@@ -1,7 +1,7 @@
 /**
 * Dependencies
 */
-var bodyParser    = require('body-parser');
+
 var logger        = require('./lib/logger/logger.js');
 var ExpressServer = require('./app/expressServer.js')
 var conf          = require('./conf.json');
@@ -15,7 +15,7 @@ var port   = process.env.PORT || conf.port;
 /**	
 * Middleware
 */
-app.server.use(bodyParser.json('application/json'));
+// app.server.use(bodyParser.json('application/json'));
 /**
 * Routes
 */

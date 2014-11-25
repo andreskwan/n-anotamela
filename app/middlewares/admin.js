@@ -1,3 +1,4 @@
 module.exports = {
-	static : require(./static)
+	static : require('./static.js'),
+	bodyparser : require('./body-parser.js')
 }
