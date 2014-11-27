@@ -9,11 +9,6 @@ var conf          = require('./conf.json');
 */
 var app = new ExpressServer();
 var port   = process.env.PORT || conf.port;
-/**
-* Routes
-*/
-// var notas = require('./lib/notas');
-// app.server.use(notas);
 
 //to work with supertest
 //supertest nos esta usando como modulo?

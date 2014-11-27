@@ -28,9 +28,14 @@ var ExpressServer = function (config){
 	//Model REST 
 	this.server.use(RESTnotas);
 	//view
-	this.server.get('/', function (req, res, next){
+	this.server.get('/article/save', function (req, res, next){
 		// debugger;
 		res.render('article_save', {nombre:"Andres"});
+	});
+	//view
+	this.server.get('/article/list', function (req, res, next){
+		// debugger;
+		res.render('article_list', { });
 	});
 }; 
 
