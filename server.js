@@ -4,6 +4,7 @@
 var logger        = require('./lib/logger/logger.js');
 var ExpressServer = require('./app/expressServer.js')
 var conf          = require('./conf.json');
+
 /**
 * Local Variables
 */
@@ -16,7 +17,7 @@ var port   = process.env.PORT || conf.port;
 //si tengo padre, me estan usando como modulo
 if (!module.parent) {
 	app.server.listen(port, function (){
-		// logger.info('http	://localhost:'+port);
+		logger.info('http://localhost:'+port);
 	});
 }else{
 	//se exporta el servicio - server para que las pruebas lo consuman

@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<h1>Esto esta disponible gracias a Swig: {{ nombre }}</h1>
+{% extends 'base.html' %}
 
-	<h1>Esto esta disponible gracias a Locals: {{ nick }}</h1>
-</body>
-</html>
+{% block content %}
+	<h1>Disponible gracias a Swig: {{ nombre }}</h1>
+
+	<h1>Disponible gracias a Locals: {{ nick }}</h1>
+{% endblock %}
