@@ -6,6 +6,8 @@ var middlewares = require('./middlewares/admin.js');
 var logger      = require('../lib/logger/logger.js');
 var swig        = require('swig');
 //routes
+var router = require('./website/router.js');
+
 var RESTnotas   = require('../lib/notas');
 //creando el objeto
 var ExpressServer = function (config){
@@ -42,17 +44,32 @@ var ExpressServer = function (config){
 	//Model REST 
 	this.server.use(RESTnotas);
 
-	//puedo crear rutas especificas para articulos
-	//view
-	this.server.get('/article/save', function (req, res, next){
-		// debugger;
-		res.render('article_save', {nombre:"Andres"});
-	});
-	//view
-	this.server.get('/article/list', function (req, res, next){
-		// debugger;
-		res.render('article_list', { });
-	});
+	for (var controller in router){
+		logger.info("controller: ",controller);
+		//identificar los prototipos 
+		for (var funcionalidad in router[controller].prototype){
+			var method          = funcionalidad.split('_')[0];
+			var entorno         = funcionalidad.split('_')[1];
+			var data            = funcionalidad.split('_')[2];
+			data = (method == 'get' && data !== undefined) ? ':data' : '';
+			var url = '/' + controller + '/' + entorno + '/' + data;
+			// logger.info("method    : ",method);
+			logger.info("entorno   : ",entorno);
+			
+
+		}
+	}
+	// //puedo crear rutas especificas para articulos
+	// //view
+	// this.server.get('/article/save', function (req, res, next){
+	// 	// debugger;
+	// 	res.render('article_save', {nombre:"Andres"});
+	// });
+	// //view
+	// this.server.get('/article/list', function (req, res, next){
+	// 	// debugger;
+	// 	res.render('article_list', { });
+	// });
 }; 
 
 module.exports = ExpressServer;
