@@ -61,19 +61,13 @@ var ExpressServer = function (config){
 			this.router(controller, funcionalidad, method, url);
 		}
 	}
-	// //puedo crear rutas especificas para articulos
-	// //view
-	// this.server.get('/article/save', function (req, res, next){
-	// 	// debugger;
-	// 	res.render('article_save', {nombre:"Andres"});
-	// });
-	// //view
 }; 
 
 ExpressServer.prototype.router = function (controller, funcionalidad, method, url){
 	logger.info("url   : ",url);
 	this.server[method](url, function (req, res, next){
 		var conf = {
+			//funcionalidad 
 			'funcionalidad': funcionalidad,
 			'req'          : req,
 			'res'          : res,
