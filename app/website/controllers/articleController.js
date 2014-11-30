@@ -10,13 +10,14 @@ var Article = function (conf){
 	}
 }
 
-Article.prototype.post_data = function (req, res, next){
-	res.render('article_list', {nombre:"post_data"});
+Article.prototype.post_save = function (req, res, next){
+	// debugger;
+	res.render('article_save', {nombre:"post_save_data"});
 }
 
 Article.prototype.get_add = function (req, res, next){
 	//aqui creo que deberia ser POST
-	res.render('article_list', {nombre:"get_add"});
+	res.render('article_add', {nombre:"get_add"});
 }
 
 Article.prototype.get_list = function (req, res, next){
