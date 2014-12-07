@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <h1>{{nombre}}</h1>
 
 <form action="/article/save" method="post">
@@ -6,3 +10,4 @@
 	Content: <input type="text" name="content" id=""><br>
 	<input type="submit" value="Save">
 </form>
+{% endblock %}

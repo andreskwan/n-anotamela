@@ -3,10 +3,45 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="/css/normalize.css" />
+	<link rel="stylesheet" href="/css/estilos.css" />
 </head>
 <body>
-	<h1>{{nick}}</h1>
+	<header>
+		<figure id="logo">
+			<img src="/img/logo.png" />
+		</figure>
+		<nav>
+			<ul>
+				<li><a href="#Casual">Casual</a></li>
+				<li><a href="#Coctel">Coctel</a></li>
+				<li><a href="#Zapatos">Zapatos</a></li>
+				<li><a href="#Accesorios">Accesorios</a></li>
+				<li><a href="#Niñas">Niñas</a></li>
+				<li><a href="#Contáctanos">Contáctanos</a></li>
+			</ul>
+		</nav>
+	</header>
+	<!-- <h1>{{nick}}</h1> -->
 	{% block content %}
+
 	{% endblock %}
+
+	<footer id="datos">
+		<div class="footer-left">
+			<h2 class="footer-titulo">Contacto</h2>
+			<p class="footer-descripcion">Cll 109 No 18B-22 of. 202 <br>San Patricio Tel: (571) 7568549 <br>Bogotá - Colombia</p>
+		</div>
+		<div class="footer-redes">
+			<h2 class="footer-titulo">Síguenos</h2>
+			<a href="https://www.facebook.com/pages/Ckheaven/319783008072661" class="icon-facebook"></a>
+			<a href="http://instagram.com/CKHEAVENBOUTIQUE/" target="_blank" class="icon-instagram"></a>
+			<a href="https://twitter.com/CKHEAVENdemoda" target="_blank" class="icon-twitter"></a>
+		</div>
+	</footer>
+		
+	{% block scripts %}
+	
+	{% endblock %}	
 </body>
 </html>

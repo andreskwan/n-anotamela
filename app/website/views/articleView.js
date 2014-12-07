@@ -19,4 +19,9 @@ Article.prototype.list = function (res, object){
 	res.render('article_list', object);
 }
 
+Article.prototype.save = function (res, object){
+	debugger;
+	res.render('article_save', object);
+}
+
 module.exports = Article;

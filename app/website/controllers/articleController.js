@@ -1,10 +1,11 @@
-var logger      = require('../../../lib/logger/logger.js');
-var ArticleView = require('../views/articleView.js');
-
+var logger       = require('../../../lib/logger/logger.js');
+var ArticleView  = require('../views/articleView.js');
+var ArticleModel = require('../models/articleModel.js');
 
 var Article = function (conf){
-	conf      = conf || {};
-	this.view = new ArticleView();
+	conf        = conf || {};
+	this.view   = new ArticleView();
+	this.model  = new ArticleModel();
 	this.response = function() {
 		//accediendo al prototipo
 		this[conf.funcionalidad] (conf.req, conf.res, conf.next);
@@ -14,9 +15,16 @@ var Article = function (conf){
 }
 
 Article.prototype.post_save = function (req, res, next){
-	debugger;
+	// debugger;
+	//para ver que llama a articleModel.save()
 	// res.render('article_save', {nombre:"post_save_data"});
-
+	this.model.save(req.body, function (doc) {
+		debugger;
+		//para ver lo que trae el callback doc
+		// res.render(article_save);// + doc.slug);
+		// Article.view.save(res, doc);
+		//I don't have access to this.view
+	});
 }
 
 Article.prototype.get_add = function (req, res, next){
