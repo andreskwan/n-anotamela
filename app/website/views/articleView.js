@@ -20,7 +20,7 @@ Article.prototype.list = function (res, object){
 }
 
 Article.prototype.save = function (res, object){
-	debugger;
+	// debugger;
 	res.render('article_save', object);
 }
 

@@ -78,7 +78,7 @@ ExpressServer.prototype.router = function (controller, funcionalidad, method, ur
 		// debugger;
 		var Controller = new router[controller](conf);
 		logger.info();
-		debugger;
+		// debugger;
 		Controller.response();
 	});
 }

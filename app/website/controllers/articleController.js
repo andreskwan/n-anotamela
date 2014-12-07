@@ -24,6 +24,7 @@ Article.prototype.post_save = function (req, res, next){
 		// res.render(article_save);// + doc.slug);
 		// Article.view.save(res, doc);
 		//I don't have access to this.view
+		res.redirect('/');
 	});
 }
 
