@@ -24,4 +24,8 @@ Article.prototype.save = function (res, object){
 	res.render('article_save', object);
 }
 
+Article.prototype.see = function (res, object){
+	// debugger;
+	res.render('article_see', object);
+}
 module.exports = Article;

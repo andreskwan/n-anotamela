@@ -18,5 +18,13 @@ Article.prototype.save = function (data, callback){
 		callback(doc);
 	});
 }
+Article.prototype.get = function (query, callback){
+	// debugger;
+	this.model.find(query)
+	.exec(function (err, doc){
+		//callback al controlador 
+		callback(doc);
+	});
+}
 
 module.exports = Article;

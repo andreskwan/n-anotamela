@@ -15,19 +15,32 @@ var Article = function (conf){
 }
 
 Article.prototype.post_save = function (req, res, next){
-	// debugger;
+	debugger;
 	//para ver que llama a articleModel.save()
 	// res.render('article_save', {nombre:"post_save_data"});
 	this.model.save(req.body, function (doc) {
-		debugger;
+		// debugger;
 		//para ver lo que trae el callback doc
 		// res.render(article_save);// + doc.slug);
 		// Article.view.save(res, doc);
 		//I don't have access to this.view
-		res.redirect('/');
+		res.redirect('/article/see/'+doc.slug);
 	});
 }
 
+Article.prototype.get_see_data = function (req, res, next){
+	//aqui creo que deberia ser PUT
+	// res.render('article_list', {nombre:"get_edit_data"});
+	var object = {};
+	//same as blocks 
+	//need a reference to self 
+	var self   = this;
+	this.model.get({slug:req.params.data}, function (doc){
+		object.article = doc[0];
+		// debugger;
+		self.view.see(res, object);
+	});
+}
 Article.prototype.get_add = function (req, res, next){
 	//aqui creo que deberia ser POST
 	// res.render('article_add', {nombre:"get_add"});
