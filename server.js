@@ -3,7 +3,8 @@
 */
 var logger        = require('./lib/logger/logger.js');
 var ExpressServer = require('./app/expressServer.js')
-var conf          = require('./conf.json');
+var mongoose      = require('mongoose');
+var conf          = require('./conf.json'); 
 
 /**
 * Local Variables
@@ -11,6 +12,7 @@ var conf          = require('./conf.json');
 var express  = new ExpressServer();
 var port = process.env.PORT || conf.port;
 
+mongoose.connect('mongodb://'+conf.mongoDB.host+'/'+conf.mongoDB.name);
 //to work with supertest
 //supertest nos esta usando como modulo?
 //o somos el servidor 
