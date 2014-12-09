@@ -79,9 +79,11 @@ nav ul li a:hover
 {
 	color: #918167;
 }
+/*como evitar manipular imagenes directamente en el css
+para poder hacer reusable este codigo?*/
 section.uno
 {
-    background-image: url('img-container4.jpg');
+    background-image: url('../img/home/img-container4.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

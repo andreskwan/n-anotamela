@@ -6,7 +6,7 @@ var Article = function (conf){
 	this.model = articleModel;
 }
 
-Article.prototype.save = function (data, callback){
+Article.prototype.saveDB = function (data, callback){
 	// debugger;
 	this.model.findOneAndUpdate({
 		title  : data.title,
@@ -18,7 +18,7 @@ Article.prototype.save = function (data, callback){
 		callback(doc);
 	});
 }
-Article.prototype.get = function (query, callback){
+Article.prototype.getDB = function (query, callback){
 	// debugger;
 	this.model.find(query)
 	.exec(function (err, doc){

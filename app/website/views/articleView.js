@@ -28,4 +28,9 @@ Article.prototype.see = function (res, object){
 	// debugger;
 	res.render('article_see', object);
 }
+//CKHeaven
+Article.prototype.casual = function (res, object){
+	// debugger;
+	res.render('article_casual', object);
+}
 module.exports = Article;
