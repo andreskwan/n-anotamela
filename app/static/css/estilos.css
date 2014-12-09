@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fuentes/icomoon.eot?k59yu5');
-	src:url('fuentes/icomoon.eot?#iefixk59yu5') format('embedded-opentype'),
-		url('fuentes/icomoon.woff?k59yu5') format('woff'),
-		url('fuentes/icomoon.ttf?k59yu5') format('truetype'),
-		url('fuentes/icomoon.svg?k59yu5#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-twn2nh');
+	src:url('fonts/icomoon.eot?#iefix-twn2nh') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-twn2nh') format('woff'),
+		url('fonts/icomoon.ttf?-twn2nh') format('truetype'),
+		url('fonts/icomoon.svg?-twn2nh#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,6 +23,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-menu:before {
+	content: "\e603";
+}
 .icon-facebook:before {
 	content: "\e600";
 }
@@ -38,24 +41,31 @@ body
 	background: #FCFCFC;
 	font-family: "Oxygen";
 	font-size: 16px;
+	text-align: center;
 }
 header
 {
 	background: #FCFCFC;
 	border-bottom: 3px solid #918167;
-	position: relative;
+}
+#logo
+{
+	text-align: center;
+	width: 30px;
 }
 header #logo img
 {
-	width: 234px;
+	width: 200px;
 }
 nav
 {
 	margin: 0;
 	padding: 0.5em;
-	position: absolute;
-	top: 0;
+	display: inline-block;
+	vertical-align: top;
 	right: 0;
+	text-align: center;
+	top: 0;
 }
 nav ul
 {
@@ -79,9 +89,7 @@ nav ul li a:hover
 {
 	color: #918167;
 }
-/*como evitar manipular imagenes directamente en el css
-para poder hacer reusable este codigo?*/
-section.uno
+#uno
 {
     background-image: url('../img/home/img-container4.jpg');
     background-position: center;
@@ -90,6 +98,7 @@ section.uno
     height: 340px;
     margin-top: 2em;
     padding: 1em 0;
+    min-width: 340px;
     position: relative;
     text-align: center;
 }
@@ -124,59 +133,73 @@ figure .imagen-Item
 	color: #FCFCFC;
 	margin: 0 0 0.5em 0;
 }
-#Ofertas
+#contenido
 {
 	background-color: #E1D9CC;
-	margin: 1em 0;
+	margin: 2em 0 1em 0;
+	text-align: center;
 }
-#Ofertas .item
+#contenido .item
 {
-	background: #FCFCFC;
-	margin: 1em 0 3em 0;
+	background: #F1F2E8;
+	margin: 1em;
+	display: inline-block;
+	vertical-align: top;
 	overflow: hidden;
+	min-width: 340px;
+	text-align: center;
 }
-#Ofertas .item a
+.item
+{
+	display: inline-block;
+	text-align: center;
+}
+#contenido .item a
 {
 	color: #918167;
 	font-size: 0.9em;
 }
-#Ofertas .item .imagen-Item
+#contenido .item .imagen-item
 {
 	float: left;
-	text-align: right;
 	margin: 1em;
 }
-#Ofertas .item .Mencion
+#contenido .item .Mencion
 {
+	color: #78787A;
 	font-size: 0.8em;
 	margin: 0 2em 0 0;
 	text-align: right;
 }
-#Ofertas .item .imagen-Item img
+#contenido .item .imagen-Item img
 {
 	margin: 0;
 	width: 96px;
 }
-.Titulo-Ofertas
+.titulo-ofertas
 {
 	background-color: #BFB5B9;
 	color: #FCFCFC;
 	padding: 0.2em;
 	text-align: center;
 }
-.Promocion
+.button-menu
 {
-	margin:  1em 0 0 0;
+
+	display: inline-block;
+	right: 0;
+	position: absolute;
 }
-#Ofertas .item .Promocion
+
+#contenido .item .Promocion
 {
 	font-size: 1.7em;
 	margin: 1em 1em 0 0.5em;
 	text-align: right;
 }
-#Ofertas .item .Promocion a
+#contenido .item .Promocion a
 {
-	color: #0A0A0A;
+	color: #78787A;
 	text-decoration: none;
 }
 #lista
@@ -225,6 +248,7 @@ figure .imagen-Item
 	color: #78787A;
 	margin: 0;
 	padding: 1.7em;
+	text-align:left;
 }
 .seccion .categoria
 {
@@ -269,22 +293,4 @@ footer
 	margin:0 0 1em 0;
 	text-align: center;
 	vertical-align: top;
-}
-
-
-@media screen and (min-width: 800px){
-	#Ofertas
-	{
-		overflow: hidden;
-	}
-	#Ofertas .item
-	{
-		width: 32%;
-		float: left;
-		margin-right: 1.3%
-	}
-	#datos
-	{
-		overflow: hidden;
-	}
 }
