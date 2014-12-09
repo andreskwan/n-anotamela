@@ -37,7 +37,7 @@ var ExpressServer = function (config){
 		// swig.setDefaults({cache: false, varControls:['[[',']]']});
 		swig.setDefaults({cache: false});
 	}
-	logger.info('Environment :', env.toUpperCase());
+	// logger.info('Environment :', env.toUpperCase());
 	/**
 	*	routes
 	*/
@@ -47,26 +47,26 @@ var ExpressServer = function (config){
 	//Router and controllers
 	for (var controller in router){
 		//identificar los prototipos 
-		logger.info("controller   : ",controller);
-		logger.info("router["+controller+"].prototype",router[controller].prototype);
-			for (var funcionalidad in router[controller].prototype){
-				//si se sigue este formato
-				//todas las funciones deben escribirse de esta manera
-				//es decir que lo echo por bouritica debe ser modificado
-				var method          = funcionalidad.split('_')[0];
-				var entorno         = funcionalidad.split('_')[1];
-				var data            = funcionalidad.split('_')[2];
-				data = (method == 'get' && data !== undefined) ? ':data' : '';
-				var url = (controller == 'home')? '/':'/' + controller + '/' + entorno + '/' + data;
-				// debugger;
-				logger.info("controller: "+controller+', func: '+funcionalidad+', '+'method: '+method+', '+'url: '+url);
-				this.router(controller, funcionalidad, method, url);
-			}
+		// logger.info("controller   : ",controller);
+		// logger.info("router["+controller+"].prototype",router[controller].prototype);
+		for (var funcionalidad in router[controller].prototype){
+			//si se sigue este formato
+			//todas las funciones deben escribirse de esta manera
+			//es decir que lo echo por bouritica debe ser modificado
+			var method          = funcionalidad.split('_')[0];
+			var entorno         = funcionalidad.split('_')[1];
+			var data            = funcionalidad.split('_')[2];
+			data = (method == 'get' && data !== undefined) ? ':data' : '';
+			var url = (controller == 'home')? '/':'/' + controller + '/' + entorno + '/' + data;
+			// debugger;
+			// logger.info("controller: "+controller+', func: '+funcionalidad+', '+'method: '+method+', '+'url: '+url);
+			this.router(controller, funcionalidad, method, url);
+		}
 	} 
 }; 
 
 ExpressServer.prototype.router = function (controller, funcionalidad, method, url){
-	logger.info(controller+"-router app.method   : ",method);
+	// logger.info(controller+"-router app.method   : ",method);
 	this.app[method](url, function (req, res, next){
 		var conf = {
 			//funcionalidad 
@@ -77,7 +77,7 @@ ExpressServer.prototype.router = function (controller, funcionalidad, method, ur
 		};
 		// debugger;
 		var Controller = new router[controller](conf);
-		logger.info();
+		// logger.info();
 		// debugger;
 		Controller.response();
 	});

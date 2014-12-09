@@ -10,7 +10,7 @@ var Home = function (conf){
 		//accediendo al prototipo
 		this[conf.funcionalidad] (conf.req, conf.res, conf.next);
 		//funcionalidad invocada desde el browser
-		logger.info("conf.funcionalidad   : ",conf.funcionalidad);
+		// logger.info("conf.funcionalidad   : ",conf.funcionalidad);
 	}
 }
 

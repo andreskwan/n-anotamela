@@ -14,6 +14,7 @@ var conf          = require('./conf.json');
 var port    = process.env.PORT || conf.port;
 var express = new ExpressServer();
 var server  = http.createServer(express.app);
+// debugger;
 var Io      = new socketIO({server:server});
 
 mongoose.connect('mongodb://'+conf.mongoDB.host+'/'+conf.mongoDB.name);
