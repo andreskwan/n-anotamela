@@ -57,9 +57,10 @@ var ExpressServer = function (config){
 			var entorno         = funcionalidad.split('_')[1];
 			var data            = funcionalidad.split('_')[2];
 			data = (method == 'get' && data !== undefined) ? ':data' : '';
-			var url = (controller == 'home')? '/':'/' + controller + '/' + entorno + '/' + data;
+			// var url = (controller == 'home')? '/':'/' + controller + '/' + entorno + '/' + data;
+			var url = (controller == 'home')? '/':'/' + entorno + '/' + data;
 			// debugger;
-			// logger.info("controller: "+controller+', func: '+funcionalidad+', '+'method: '+method+', '+'url: '+url);
+			logger.info("controller: "+controller+', func: '+funcionalidad+', '+'method: '+method+', '+'url: '+url);
 			this.router(controller, funcionalidad, method, url);
 		}
 	} 

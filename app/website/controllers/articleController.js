@@ -60,11 +60,32 @@ Article.prototype.get_edit_data = function (req, res, next){
 }
 
 //CKHeaven
-Article.prototype.get_casual = function (req, res, next){
+Article.prototype.get_coctel = function (req, res, next){
 	//aqui creo que deberia ser POST
 	// res.render('article_add', {nombre:"get_add"});
 	// debugger;
-	var object = {nombre:"get_add"};
-	this.view.casual(res, object);
+	var object = {nombre:"get_coctel"};
+	this.view.coctel(res, object);
+}
+Article.prototype.get_zapatos = function (req, res, next){
+	//aqui creo que deberia ser POST
+	// res.render('article_add', {nombre:"get_add"});
+	// debugger;
+	var object = {nombre:"get_Zapatos"};
+	this.view.zapatos(res, object);
+}
+Article.prototype.get_calle = function (req, res, next){
+	//aqui creo que deberia ser POST
+	// res.render('article_add', {nombre:"get_add"});
+	// debugger;
+	var object = {nombre:"get_calle"};
+	this.view.calle(res, object);
+}
+Article.prototype.get_accesorios = function (req, res, next){
+	//aqui creo que deberia ser POST
+	// res.render('article_add', {nombre:"get_add"});
+	// debugger;
+	var object = {nombre:"get_accesorios"};
+	this.view.accesorios(res, object);
 }
 module.exports = Article;

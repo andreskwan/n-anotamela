@@ -29,8 +29,20 @@ Article.prototype.see = function (res, object){
 	res.render('article_see', object);
 }
 //CKHeaven
-Article.prototype.casual = function (res, object){
+Article.prototype.coctel = function (res, object){
 	// debugger;
-	res.render('article_casual', object);
+	res.render('article_coctel', object);
+}
+Article.prototype.zapatos = function (res, object){
+	// debugger;
+	res.render('article_zapatos', object);
+}
+Article.prototype.calle = function (res, object){
+	// debugger;
+	res.render('article_calle', object);
+}
+Article.prototype.accesorios = function (res, object){
+	// debugger;
+	res.render('article_accesorios', object);
 }
 module.exports = Article;
