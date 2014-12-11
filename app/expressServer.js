@@ -64,6 +64,9 @@ var ExpressServer = function (config){
 			this.router(controller, funcionalidad, method, url);
 		}
 	} 
+	this.app.use(function (req,res) {
+    res.render('404', {url:req.url});
+});
 }; 
 
 ExpressServer.prototype.router = function (controller, funcionalidad, method, url){

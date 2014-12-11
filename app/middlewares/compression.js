@@ -1,5 +1,5 @@
 var compression = require('compression');
 
 module.exports = compression({
-  threshold: 512
+  threshold: 0
 });
