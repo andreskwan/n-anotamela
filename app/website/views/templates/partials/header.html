@@ -3,15 +3,8 @@
 	<figure id="logo">
 		<img src="/img/logo.png" />
 	</figure>
-	<nav>
-		<ul>
-			<li><a href="/article/casual">Casual</a></li>
-			<li><a href="#Coctel">Coctel</a></li>
-			<li><a href="#Zapatos">Zapatos</a></li>
-			<li><a href="#Accesorios">Accesorios</a></li>
-			<li><a href="#Niñas">Niñas</a></li>
-			<li><a href="#Kwan">Kwan</a></li>
-		</ul>
-	</nav>
+	{% block nav %} 
+		{% include 'nav.html' %} 
+	{% endblock %}
 </header>
 {% endblock %}
