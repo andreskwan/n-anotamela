@@ -5,51 +5,26 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta name="description" content="Ropa y accesorios para mujer" />
 	<title>CKHeaven boutique</title>
-	<!-- <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'/> -->
-	<!-- <link rel="stylesheet" href="/css/normalize.css" />
-	<link rel="stylesheet" href="/css/estilos.css" /> -->
+	<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'/>
+	<link rel="stylesheet" href="/css/normalize.css" />
+	<link rel="stylesheet" href="/css/estilos.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
 <body>
-	<header>
-		<figure id="logo">
-			<img src="/img/logo.png" />
-		</figure>
-		<nav>
-			<ul>
-				<li><a href="/article/casual">Casual</a></li>
-				<li><a href="#Coctel">Coctel</a></li>
-				<li><a href="#Zapatos">Zapatos</a></li>
-				<li><a href="#Accesorios">Accesorios</a></li>
-				<li><a href="#Niñas">Niñas</a></li>
-				<li><a href="#Contáctanos">Contáctanos</a></li>
-			</ul>
-		</nav>
-	</header>
-	<!-- <h1>{{nick}}</h1> -->
+	{% block header %} 
+		{% include 'partials/header.html' %} 
+	{% endblock %}
+	
 	{% block content %}
 
 	{% endblock %}
 
-	<footer id="datos">
-		<div class="footer-left">
-			<h2 class="footer-titulo">Contacto</h2>
-			<p class="footer-descripcion">Cll 109 No 18B-22 of. 202 <br>San Patricio Tel: (571) 7568549 <br>Bogotá - Colombia</p>
-		</div>
-		<div class="footer-redes">
-			<h2 class="footer-titulo">Síguenos</h2>
-			<a href="https://www.facebook.com/pages/Ckheaven/319783008072661" class="icon-facebook"></a>
-			<a href="http://instagram.com/CKHEAVENBOUTIQUE/" target="_blank" class="icon-instagram"></a>
-			<a href="https://twitter.com/CKHEAVENdemoda" target="_blank" class="icon-twitter"></a>
-		</div>
-	</footer>
-	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"> </script>
-	<script type="text/javascript" src="/js/mainSocket.js"></script>	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	{% block scripts %}
+	{% block footer %} 
+		{% include 'partials/footer.html' %} 
+	{% endblock %}
 	
+	{% block scripts %}
+		{% include 'partials/scripts.html' %}
 	{% endblock %}	
 </body>
 </html>
