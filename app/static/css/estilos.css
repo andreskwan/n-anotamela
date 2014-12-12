@@ -296,3 +296,38 @@ footer
 	text-align: center;
 	vertical-align: top;
 }
+
+
+
+
+
+
+
+
+ body
+ {
+ 	background: #FCFCFC;
+ 	font-family: "Oxygen";
+ 	font-size: 16px;
+ 	text-align: center;
+ }
+ .navbar
+ {
+ 	background: #FCFCFC;
+ }
+ .navbar-brand
+ {
+ 	padding: 10px;
+ }
+ .navbar-default
+ {
+ 	border-color: #918167;
+ }
+ .navbar-fixed-top
+ {
+ 	border-width: 0 0 3px;
+ }
+ #logo img
+ {
+ 	margin: 0;
+ }
