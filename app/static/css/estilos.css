@@ -38,13 +38,30 @@
 
 body
 {
-
 	background: #FCFCFC;
 	font-family: "Oxygen";
 	font-size: 16px;
 	padding-top: 70px;
 	text-align: center;
 }
+
+.navbar
+{
+	background: #FCFCFC;
+}
+.navbar-brand
+{
+	padding: 3px;
+}
+.navbar-default
+{
+	border-color: #918167;
+}
+.navbar-fixed-top
+{
+	border-width: 0 0 3px;
+}
+
 header
 {
 	background: #FCFCFC;
@@ -54,6 +71,10 @@ header
 {
 	text-align: center;
 	width: 30px;
+}
+#logo img
+{
+	margin: 0;
 }
 header #logo img
 {
@@ -100,7 +121,7 @@ nav ul li a:hover
     height: 340px;
     margin-top: 2em;
     padding: 1em 0;
-    min-width: 340px;
+    min-width: 290px;
     position: relative;
     text-align: center;
 }
@@ -114,7 +135,7 @@ figcaption.Pie-Foto
 	text-align: right;
 	margin: 0 0 1em 0;
 	bottom: 0;
-	width: 368px;
+	width: 300px;
 }
 figcaption.Pie-Foto p
 {
@@ -148,7 +169,7 @@ figure .imagen-Item
 	display: inline-block;
 	vertical-align: top;
 	overflow: hidden;
-	min-width: 340px;
+	min-width: 290px;
 	text-align: center;
 }
 .item
@@ -304,30 +325,4 @@ footer
 
 
 
- body
- {
- 	background: #FCFCFC;
- 	font-family: "Oxygen";
- 	font-size: 16px;
- 	text-align: center;
- }
- .navbar
- {
- 	background: #FCFCFC;
- }
- .navbar-brand
- {
- 	padding: 10px;
- }
- .navbar-default
- {
- 	border-color: #918167;
- }
- .navbar-fixed-top
- {
- 	border-width: 0 0 3px;
- }
- #logo img
- {
- 	margin: 0;
- }
+ 
