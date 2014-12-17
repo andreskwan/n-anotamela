@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
- 	<h2>Content</h2>
-	<h1>{{nombre}}</h1>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-3">
+	    <div class="thumbnail">
+	        <div class="panel-default">
+	            <div class="panel-heading">
+	                <h3 class="nombre">Accesorios</h3>
+	            </div>
+	        </div>
+	        <a><img class="thumbnail img-responsive" id="image-1" src="/img/home/casual1.jpg" class="img-responsive img-rounded img-thumbnail" alt="CKheaven"/></a>
+	        <div class="hidden" id="img-repo">
+	            <div class="item" id="image-1">
+	                <img class="thumbnail img-responsive" title="image 11" src="/img/home/casual1.jpg">
+	            </div>
+	        </div>
+	        <div class="iconos-redes">
+	            <a href="http://facebook.com/pages/Ckheaven/319783008072661?fref=ts/" target="_blank" class="icon-facebook"></a>
+	            <a href="http://instagram.com/ckheavenboutique/" target="_blank" class="icon-instagram"></a>
+	            <a href="http://twitter.com/Ckheavendemoda/" target="_blank" class="icon-twitter"></a>
+	        </div>
+	        <p class="descripcion">Vestido en seda ideal para
+	           eventos nocturnos.</p>
+	        <p class="tallas">Tallas S M L</p>
+	    </div>
+	</div>
+</div>
 {% endblock %}
