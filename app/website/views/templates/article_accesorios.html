@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
- 	<h2>Content</h2>
-	<h1>{{nombre}}</h1>
+ 	<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<div id="links">
+    <a href="/img/Hillary_Goldwynn_01.jpg" title="Banana">
+        <img src="/img/thumbnails/Hillary_Goldwynn_01_tn.jpg" alt="Banana">
+    </a>
+    <a href="/img/Hillary_Goldwynn_02.jpg" title="Apple">
+        <img src="/img/thumbnails/Hillary_Goldwynn_02_tn.jpg" alt="Apple">
+    </a>
+    <a href="/img/Hillary_Goldwynn_03.jpg" title="Orange">
+        <img src="/img/thumbnails/Hillary_Goldwynn_03_tn.jpg" alt="Orange">
+    </a>
+</div>
+
 {% endblock %}
