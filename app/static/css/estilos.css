@@ -61,7 +61,17 @@ body
 {
   border-width: 0 0 3px;
 }
+.navbar-toggle
+{
+  margin: 0px;
+}
 
+#links img
+{
+  height: 331px;
+  margin: 8px;
+  width:  305px;
+}
 header
 {
   background: #FCFCFC;

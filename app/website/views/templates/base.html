@@ -10,7 +10,9 @@
 	<link rel="stylesheet" href="/css/bootstrap.icon-large.min.css" >
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 	<link rel="stylesheet" href="/css/estilos.css" />
-	<link rel="stylesheet" href="/css/blueimp-gallery.min.css">
+	
+	{% block head %} 
+	{% endblock %}
 </head>
 <body>
 	{% block header %} 
@@ -25,12 +27,11 @@
 		{% include 'partials/footer.html' %} 
 	{% endblock %}
 	
+	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"> </script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="/js/plugins.js"></script>
 	{% block scripts %}
-		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"> </script>
-		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-		<script type="text/javascript" src="/js/blueimp-gallery.min.js"></script>
-		<script type="text/javascript" src="/js/mainSocket.js"></script>
-<!-- {% include 'partials/scripts.html' %} -->
 	{% endblock %}	
 </body>
 </html>

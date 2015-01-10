@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %} 
+    <link rel="stylesheet" href="/css/blueimp-gallery.min.css">
+{% endblock %}
+
 {% block content %}
  	<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
 <div id="blueimp-gallery" class="blueimp-gallery">
@@ -13,15 +17,20 @@
 </div>
 
 <div id="links">
-    <a href="/img/Hillary_Goldwynn_01.jpg" title="Banana">
-        <img src="/img/thumbnails/Hillary_Goldwynn_01_tn.jpg" alt="Banana">
-    </a>
-    <a href="/img/Hillary_Goldwynn_02.jpg" title="Apple">
-        <img src="/img/thumbnails/Hillary_Goldwynn_02_tn.jpg" alt="Apple">
-    </a>
-    <a href="/img/Hillary_Goldwynn_03.jpg" title="Orange">
-        <img src="/img/thumbnails/Hillary_Goldwynn_03_tn.jpg" alt="Orange">
-    </a>
+            <a href="/img/Hillary_Goldwynn_01.jpg" title="Banana">
+                <img src="/img/thumbnails/Hillary_Goldwynn_01_tn.jpg" alt="Banana">
+            </a>
+            <a href="/img/Hillary_Goldwynn_02.jpg" title="Apple">
+                <img src="/img/thumbnails/Hillary_Goldwynn_02_tn.jpg" alt="Apple">
+            </a>
+            <a href="/img/Hillary_Goldwynn_03.jpg" title="Orange">
+                <img src="/img/thumbnails/Hillary_Goldwynn_03_tn.jpg" alt="Orange">
+            </a>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="/js/gallery.js"></script>
+<script type="text/javascript" src="/js/blueimp-gallery.min.js"></script>
 {% endblock %}
