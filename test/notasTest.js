@@ -1,7 +1,7 @@
 //---------------------------
 //Supertest
-//para hacer solicitud al 
-//hace lo mismo que postman 
+//para hacer solicitud al
+//hace lo mismo que postman
 var request  = require('supertest-as-promised');
 var api      = require('../server.js');
 var logger   = require('../lib/logger/logger.js');
@@ -16,7 +16,7 @@ function createNote(){
 		nota: {
 			"title": "Mejorando.la #node-pro",
 			"description": "Introduccion a clase",
-			"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
+			"type": "js", // tipo de dato de la nota, permitir highlight and warnings
 			"body": "soy el cuerpo de json"
 		}
 	};
@@ -36,7 +36,7 @@ function createNotes(){
 		nota: {
 			"title": "Nota 1",
 			"description": "Introduccion a clase",
-			"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
+			"type": "js", // tipo de dato de la nota, permitir highlight and warnings
 			"body": "soy el cuerpo de json"
 		}
 	};
@@ -44,7 +44,7 @@ function createNotes(){
 		nota: {
 			"title": "Nota 2",
 			"description": "Introduccion a clase",
-			"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
+			"type": "js", // tipo de dato de la nota, permitir highlight and warnings
 			"body": "soy el cuerpo de json"
 		}
 	};
@@ -64,15 +64,15 @@ function createNotes(){
 describe('recurso /notas', function (){
 	//La primera prueba sera POST
 	describe('POST', function () {
-		it('should return/create a new note', function (done){
-			// throw new Error('tengo hambre'); 
+		it.only('should return/create a new note', function (done){
+			// throw new Error('tengo hambre');
 			// return true;
 			//crear nota nueva
 			var data = {
 				"nota": {
 					"title": "Mejorando.la #node-pro",
 					"description": "Introduccion a clase",
-					"type": "js", // tipo de dato de la nota, permitir highlight and warnings 
+					"type": "js", // tipo de dato de la nota, permitir highlight and warnings
 					"body": "soy el cuerpo de json"
 				}
 			};
@@ -83,7 +83,7 @@ describe('recurso /notas', function (){
 				//------------------
 				//Post - send - create
 				//------------------
-				//format: usar el encabezado para identificar el recurso 
+				//format: usar el encabezado para identificar el recurso
 				//         accept application/json
 				.set('Accept', 'application/json')
 				//body: nota en json
@@ -105,15 +105,15 @@ describe('recurso /notas', function (){
 					expect(nota).to.have.property('description', 'Introduccion a clase');
 					expect(nota).to.have.property('type', 'js');
 					expect(nota).to.have.property('body', 'soy el cuerpo de json');
-					expect(nota).to.have.property('id');
+					expect(nota).to.have.property('_id');
 					done();
 				});
-				// .expect('Content-type', /application\/json/)	
+				// .expect('Content-type', /application\/json/)
 				// .end(function (err, res){
 				// 	var body = res.body;
 				// 	expect(body).to.have.property('nota');
 		});
-	});	
+	});
 	describe('GET', function() {
 		beforeEach(createNote);
 		it('deberia obtener una nota existente', function (done) {
@@ -124,7 +124,7 @@ describe('recurso /notas', function (){
 				.expect(200)
 				.expect('Content-type', /application\/json/)
 			.then(function assertions (res){
-				var nota = res.body.notas;	
+				var nota = res.body.notas;
 				expect(res.body).to.have.property('notas');
 				expect(nota).to.have.property('id', id);
 				expect(nota).to.have.property('title', 'Mejorando.la #node-pro');
@@ -141,7 +141,7 @@ describe('recurso /notas', function (){
 				.expect(201)
 				.expect('Content-type', /application\/json/)
 			.then(function assertions (res){
-				var nota = res.body;	
+				var nota = res.body;
 				logger.info("res.body:",res.body);
 				expect(res.body).to.have.property('notas')
 					.and.to.be.an('array')
@@ -177,7 +177,7 @@ describe('recurso /notas', function (){
 			.then(function assertions (res){
 				// logger.info("in assertions");
 
-				var notaValidar = res.body.nota;	
+				var notaValidar = res.body.nota;
 				// logger.info('res.body:',res.body);
 				// logger.info('notaValidar',notaValidar);
 				expect(res.body).to.have.property('nota');
@@ -187,7 +187,7 @@ describe('recurso /notas', function (){
 				expect(notaValidar).to.have.property('type', 'js');
 				expect(notaValidar).to.have.property('body', 'soy el cuerpo de json');
 				done();
-			}, done) 
+			}, done)
 		});
 	});
 	describe('DELETE', function() {
@@ -198,12 +198,12 @@ describe('recurso /notas', function (){
 			.expect(204)
 			.then(function assertNoteDestroyed(res){
 				return request.get('/notas/'+id)
-				.expect(400);				
+				.expect(400);
 			}, done)
 			.then( function (){
 				done();
 			});
 		});
-	});	
+	});
 });
 
