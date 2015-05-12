@@ -1,6 +1,57 @@
 {% extends 'base.html' %}
 
+{% block head %} 
+    <link rel="stylesheet" href="/css/blueimp-gallery.min.css">
+{% endblock %}
+
 {% block content %}
- 	<h2>Content</h2>
-	<h1>{{nombre}}</h1>
+ 	<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<div id="links" class="accessories">
+            <a href="/img/zapatos/9.jpg" title="Naranja">
+                <img src="/img/zapatos/9.jpg" alt="Naranja">
+            </a>
+            <a href="/img/zapatos/2.jpg" title="Black">
+                <img src="/img/zapatos/2.jpg" alt="Black">
+            </a>
+            <a href="/img/zapatos/3.jpg" title="Black">
+                <img src="/img/zapatos/3.jpg" alt="Black">
+            </a>
+            <a href="/img/zapatos/4.jpg" title="Black">
+                <img src="/img/zapatos/4.jpg" alt="Black">
+            </a>
+            <a href="/img/zapatos/5.jpg" title="Black">
+                <img src="/img/zapatos/5.jpg" alt="Black">
+            </a>
+            <a href="/img/zapatos/15.jpg" title="Naranja">
+                <img src="/img/zapatos/15.jpg" alt="Naranja">
+            </a>
+            <a href="/img/zapatos/10.jpg" title="Black">
+                <img src="/img/zapatos/10.jpg" alt="Black">
+            </a>
+            <a href="/img/zapatos/12.jpg" title="Black">
+                <img src="/img/zapatos/12.jpg" alt="Black">
+            </a>
+            <a href="/img/zapatos/13.jpg" title="Black">
+                <img src="/img/zapatos/13.jpg" alt="Black">
+            </a>
+            <a href="/img/zapatos/14.jpg" title="Black">
+                <img src="/img/zapatos/14.jpg" alt="Black">
+            </a>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="/js/gallery.js"></script>
+<script type="text/javascript" src="/js/blueimp-gallery.min.js"></script>
 {% endblock %}
