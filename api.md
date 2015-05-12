@@ -30,7 +30,7 @@ anotame.la es una aplicacion que me permite crear notas de codigo para mis clase
   Solicitud [POST] /notas
     {
       "nota":{
-        "title": "Mejorando.la #node-pro",
+        "title": " #node-pro",
         "description": "Introduccion a clase",
         "type": "js",
         "body": "mira mama ya se JS"
@@ -42,7 +42,7 @@ anotame.la es una aplicacion que me permite crear notas de codigo para mis clase
     {
       "nota":{
         "id": 125,
-        "title": "Mejorando.la #node-pro",
+        "title": " #node-pro",
         "description": "Introduccion a clase",
         "type": "js",
         "body": "mira mama ya se JS"
@@ -58,7 +58,7 @@ anotame.la es una aplicacion que me permite crear notas de codigo para mis clase
     {
       "nota":{
         "id": 123,
-        "title": "Mejorando.la #node-pro",
+        "title": " #node-pro",
         "description": "Introduccion a clase",
         "type": "js",
         "body": "mira mama ya se JS"
@@ -70,7 +70,7 @@ anotame.la es una aplicacion que me permite crear notas de codigo para mis clase
 
     {
       nota:{
-        "title": "Mejorando.la #node-pro",
+        "title": " #node-pro",
         "description": "Introduccion a clase",
         "type": "ruby",
         "body": "mira mama ya se ruby"
@@ -82,7 +82,7 @@ anotame.la es una aplicacion que me permite crear notas de codigo para mis clase
     {
       nota:{
         "id": 123,
-        "title": "Mejorando.la #node-pro",
+        "title": " #node-pro",
         "description": "Introduccion a clase",
         "type": "ruby",
         "body": "mira mama ya se ruby"
@@ -102,7 +102,7 @@ anotame.la es una aplicacion que me permite crear notas de codigo para mis clase
     [{
       nota:{
         "id": 123,
-        "title": "Mejorando.la #node-pro",
+        "title": " #node-pro",
         "description": "Introduccion a clase",
         "type": "js",
         "body": "mira mama ya se JS"
@@ -111,7 +111,7 @@ anotame.la es una aplicacion que me permite crear notas de codigo para mis clase
     {
       nota:{
         "id": 12345,
-        "title": "Mejorando.la #node-pro",
+        "title": " #node-pro",
         "description": "Introduccion a clase",
         "type": "js",
         "body": "mira mama ya no se JS"

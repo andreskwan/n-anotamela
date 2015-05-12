@@ -66,11 +66,17 @@ body
   margin: 0px;
 }
 
+#links .accessories img
+{
+  height: 270px;/*331*/
+  margin: 8px;
+  width:  310px;/*//305*/
+}
 #links img
 {
-  height: 331px;
+  height: 260px;/*331*/
   margin: 8px;
-  width:  305px;
+  width:  310px;/*//305*/
 }
 header
 {

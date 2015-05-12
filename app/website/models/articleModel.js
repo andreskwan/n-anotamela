@@ -8,8 +8,6 @@ var Article = function (conf){
 };
 
 Article.prototype.save = function (data, callback){
-	// debugger;
-	 // debugger;
 	// logger.info("MODEL - SAVE - Article.prototype.save");
 	// logger.info("MODEL - SAVE - data:", data);
 	// A.findOneAndUpdate(conditions, update, options)
@@ -29,7 +27,6 @@ Article.prototype.save = function (data, callback){
 	});
 };
 Article.prototype.get = function (query, callback){
-	// debugger;
 	// logger.info("MODEL - GET - query: ",query);
 	//aqui deberia cambiar este objeto y solo dejar el query
 	//de esta manera es mas plural, puedo buscar por otros criterios
@@ -44,7 +41,6 @@ Article.prototype.get = function (query, callback){
 	});
 };
 Article.prototype.put = function (data, callback){
-	// debugger;
 	// logger.info("MODEL - PUT - query: ",data);
 	// logger.info("MODEL - PUT - data._id:",data._id);
 	this.model.findByIdAndUpdate(data._id,
@@ -65,7 +61,6 @@ Article.prototype.put = function (data, callback){
 };
 
 Article.prototype.delete = function (id, callback){
-	// debugger;
 	// logger.info("MODEL - PUT - query: ",data);
 	// logger.info("MODEL - DELETE - data._id:",data._id);
 	this.model.findByIdAndRemove(id)

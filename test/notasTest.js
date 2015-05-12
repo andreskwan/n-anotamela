@@ -29,7 +29,7 @@ function createNote(){
 			this.id = res.body.nota._id;
 			// logger.info("BEFORE - res.body",res.body);
 		}.bind(this));
-};
+}
 
 function createNotes(){
 	var id;
@@ -59,7 +59,7 @@ function createNotes(){
 		.send(data2)
 		.expect(201)
 		.end();
-};
+}
 //hacer una prueba del recurso notas.js
 //esta funcion describe el contexto de la prueba inicial
 describe('recurso /notas', function (){
@@ -103,7 +103,7 @@ describe('recurso /notas', function (){
 					expect(body).to.have.property('nota');
 					nota = body.nota;
 					var _id = body.nota._id;
-					// logger.info("_id",_id);
+					// logger.info("TEST - PUT - _id:",_id);
 					expect(nota).to.have.property('title', 'Mejorando.la #node-pro');
 					expect(nota).to.have.property('description', 'Introduccion a clase');
 					expect(nota).to.have.property('type', 'js');
@@ -171,8 +171,6 @@ describe('recurso /notas', function (){
 				.expect('Content-type', /application\/json/)
 			//editar nota
 			.then(function putNota (res){
-				// logger.info('in putNota');
-				//get returns notas
 				// logger.info('TEST - PUT - res.body: ',res.body);
 				// logger.info('TEST - PUT - res.body.notas: ',res.body.notas);
 				var notas = res.body.notas;
@@ -182,7 +180,7 @@ describe('recurso /notas', function (){
 				return request.put('/notas/'+_id)
 					.send({nota:notaActualizada})
 					.expect(200)
-					.expect('Content-type', /application\/json/)
+					.expect('Content-type', /application\/json/);
 			}, done)
 			//eveluar que la nota se haya actualizado correctamente
 			.then(function assertions (res){
@@ -198,7 +196,7 @@ describe('recurso /notas', function (){
 				expect(notaValidar).to.have.property('type', 'js');
 				expect(notaValidar).to.have.property('body', 'soy el cuerpo de json');
 				done();
-			}, done)
+			}, done);
 		});
 	});
 	describe('DELETE', function() {
